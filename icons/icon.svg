@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ead08f"/><stop offset="1" stop-color="#b8924b"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="0.3" cy="0.2" r="1">
+      <stop offset="0" stop-color="#1a1820"/><stop offset="1" stop-color="#07060f"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- mihrab: a pointed arch on two short columns -->
+  <path d="M17 52V31c0-9 6.6-15.6 15-20 8.4 4.4 15 11 15 20v21" fill="none" stroke="url(#g)" stroke-width="4.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M12 52.5h40" stroke="url(#g)" stroke-width="4.2" stroke-linecap="round"/>
+  <!-- crescent inside the arch -->
+  <path d="M35.2 25.5a9 9 0 1 0 0 16.4 7.2 7.2 0 1 1 0-16.4z" fill="url(#g)" transform="translate(3 1.5)"/>
+</svg>

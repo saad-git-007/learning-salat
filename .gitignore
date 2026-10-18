@@ -1,0 +1,13 @@
+# Recitation recordings are cut from the alislam.org Salat Guide and are not redistributed here.
+# Build them with tools/audio/build_audio.py (see README).
+audio/*.mp3
+audio/*.wav
+
+# Internal notes and local tooling
+*.md
+!README.md
+.wrangler/
+node_modules/
+__pycache__/
+*.blend1
+js/rig.js

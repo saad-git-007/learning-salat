@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>frames</title>
+<style>body{margin:0;background:#222;display:flex;gap:10px;padding:8px;align-items:flex-start}iframe{border:0;background:#000;flex:none}</style>
+<script>
+// /dev/frames.html?w=360,390,430&h=800&step=14&size=80
+const q = new URLSearchParams(location.search);
+const ws = (q.get('w') || '360,390,430').split(',').map(Number), h = +(q.get('h') || 800);
+addEventListener('DOMContentLoaded', () => {
+  for (const w of ws) {
+    const f = document.createElement('iframe');
+    f.src = '/?f=' + w + '&t=' + Date.now(); f.style.width = w + 'px'; f.style.height = h + 'px';
+    f.onload = () => setTimeout(() => {
+      const d = f.contentDocument, W = f.contentWindow;
+      const wel = d.querySelector('#welcome'); wel?.close?.(); if (wel) wel.style.display = 'none';
+      const st = q.get('step'); if (st && W.salat) { W.salat.state.idx = +st; W.salat.enterStep(+st); }
+      const sz = q.get('size'); if (sz) { for (let i = 0; i < 3 && (d.querySelector('.app').dataset.viewSize || '100') !== sz; i++) d.querySelector('#view-size').click(); }
+    }, 3500);
+    document.body.appendChild(f);
+  }
+});
+</script>

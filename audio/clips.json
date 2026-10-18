@@ -1,0 +1,154 @@
+{
+ "iqamah": {
+  "file": "iqamah.mp3",
+  "dur": 35.58,
+  "marks": [
+   0.16,
+   3.86,
+   9.5,
+   15.69,
+   19.32,
+   23.69,
+   28.0,
+   31.37
+  ]
+ },
+ "takbir": {
+  "file": "takbir.mp3",
+  "dur": 1.67,
+  "marks": [
+   0.12
+  ]
+ },
+ "thana": {
+  "file": "thana.mp3",
+  "dur": 11.82,
+  "marks": [
+   0.12
+  ]
+ },
+ "taawwudh": {
+  "file": "taawwudh.mp3",
+  "dur": 5.27,
+  "marks": [
+   0.12
+  ]
+ },
+ "bismillah": {
+  "file": "bismillah.mp3",
+  "dur": 3.7,
+  "marks": [
+   0.12
+  ]
+ },
+ "fatihah": {
+  "file": "fatihah.mp3",
+  "dur": 35.33,
+  "marks": [
+   0.12,
+   5.85,
+   8.98,
+   12.3,
+   18.06,
+   21.95,
+   26.92
+  ]
+ },
+ "ikhlas": {
+  "file": "ikhlas.mp3",
+  "dur": 15.73,
+  "marks": [
+   0.12,
+   3.66,
+   6.26,
+   8.45,
+   11.86
+  ]
+ },
+ "ruku": {
+  "file": "ruku.mp3",
+  "dur": 3.05,
+  "marks": [
+   0.12
+  ]
+ },
+ "tasmi": {
+  "file": "tasmi.mp3",
+  "dur": 2.74,
+  "marks": [
+   0.12
+  ]
+ },
+ "tahmid": {
+  "file": "tahmid.mp3",
+  "dur": 7.93,
+  "marks": [
+   0.12,
+   2.54
+  ]
+ },
+ "sajdah": {
+  "file": "sajdah.mp3",
+  "dur": 3.08,
+  "marks": [
+   0.12
+  ]
+ },
+ "jilsah": {
+  "file": "jilsah.mp3",
+  "dur": 12.51,
+  "marks": [
+   0.12
+  ]
+ },
+ "tashahhud": {
+  "file": "tashahhud.mp3",
+  "dur": 33.29,
+  "marks": [
+   0.12,
+   6.95,
+   14.97,
+   22.49,
+   27.41
+  ]
+ },
+ "durud": {
+  "file": "durud.mp3",
+  "dur": 43.33,
+  "marks": [
+   0.12,
+   7.65,
+   16.87,
+   21.01,
+   29.44,
+   39.27
+  ]
+ },
+ "rabbana": {
+  "file": "rabbana.mp3",
+  "dur": 13.67,
+  "marks": [
+   0.24,
+   5.51,
+   9.26
+  ]
+ },
+ "rabbijalni": {
+  "file": "rabbijalni.mp3",
+  "dur": 20.65,
+  "marks": [
+   0.24,
+   4.07,
+   5.75,
+   11.5,
+   15.06
+  ]
+ },
+ "salam": {
+  "file": "salam.mp3",
+  "dur": 2.73,
+  "marks": [
+   0.12
+  ]
+ }
+}

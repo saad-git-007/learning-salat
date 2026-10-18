@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Learning Salat</title>
+<meta name="description" content="Learn Salat step by step with a 3D guide, Arabic audio, transliteration and English meaning.">
+<meta property="og:title" content="Learning Salat">
+<meta name="theme-color" content="#07060f">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://learn-salat.pages.dev/">
+<meta property="og:site_name" content="Learning Salat">
+<meta property="og:description" content="Learn Salat step by step with a 3D guide, Arabic audio, transliteration and English meaning.">
+<meta property="og:image" content="https://learn-salat.pages.dev/og-image.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Learning Salat, with Bismillah in Arabic and the app icon">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Learning Salat">
+<meta name="twitter:description" content="Learn Salat step by step with a 3D guide, Arabic audio, transliteration and English meaning.">
+<meta name="twitter:image" content="https://learn-salat.pages.dev/og-image.jpg?v=2">
+<script>
+  // Apply the saved theme before first paint.
+  try { const t = localStorage.getItem('salat.theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,400..600&family=Instrument+Serif:ital@1&family=Inter:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css?v=20261018u">
+<script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+  } }
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.7 5.9 6.4.7-4.8 4.3 1.4 6.3L12 16.8 6.3 20l1.4-6.3-4.8-4.3 6.4-.7z" fill="currentColor"/></symbol>
+    <symbol id="i-quiz" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><path d="M9.4 9.3a2.7 2.7 0 1 1 3.8 2.5c-.8.4-1.2 1-1.2 1.9v.3"/></g><circle cx="12" cy="17.2" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r=".9" fill="currentColor"/><circle cx="4.5" cy="12" r=".9" fill="currentColor"/><circle cx="4.5" cy="18" r=".9" fill="currentColor"/></g></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></g></symbol>
+    <symbol id="i-skip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17c0-6 4-9.5 9-9.5h6"/><path d="M15.5 4l3.5 3.5-3.5 3.5"/><path d="M19 15v5"/></g></symbol>
+    <symbol id="i-shrink" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l5.5 5.5M9.5 5v4.5H5M20 20l-5.5-5.5M14.5 19v-4.5H19"/></g></symbol>
+    <symbol id="i-grow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 9.5L4 4M4 8.5V4h4.5M14.5 14.5L20 20M20 15.5V20h-4.5"/></g></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M8.94 4.61L9.86 4.29L10.07 1.58L13.93 1.58L14.14 4.29L15.06 4.61L15.94 5.04L18.00 3.26L20.74 6.00L18.96 8.06L19.39 8.94L19.71 9.86L22.42 10.07L22.42 13.93L19.71 14.14L19.39 15.06L18.96 15.94L20.74 18.00L18.00 20.74L15.94 18.96L15.06 19.39L14.14 19.71L13.93 22.42L10.07 22.42L9.86 19.71L8.94 19.39L8.06 18.96L6.00 20.74L3.26 18.00L5.04 15.94L4.61 15.06L4.29 14.14L1.58 13.93L1.58 10.07L4.29 9.86L4.61 8.94L5.04 8.06L3.26 6.00L6.00 3.26L8.06 5.04ZM15.4 12a3.4 3.4 0 1 0 -6.8 0a3.4 3.4 0 1 0 6.8 0Z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><path d="M12 11v6"/></g><circle cx="12" cy="7.6" r="1.25" fill="currentColor"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></g></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6.5 7 6.5 11.5a6.5 6.5 0 0 1-13 0C5.5 10 12 3 12 3z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-kaaba" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 8l8-3.5L20 8v10l-8 2.5L4 18z"/><path d="M4 8l8 2.5L20 8M12 10.5V20.5M4 11l8 2.5 8-2.5"/></g></symbol>
+    <symbol id="i-ear" viewBox="0 0 24 24"><path d="M7 9a5 5 0 0 1 10 0c0 3-3 3.5-3 6.5a2.5 2.5 0 0 1-5 0M10 10a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-hands" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20v-6l-2-3V5.5a1.3 1.3 0 0 1 2.6 0V10M17 20v-6l2-3V5.5a1.3 1.3 0 0 0-2.6 0V10"/><circle cx="12" cy="7" r="2.4"/></g></symbol>
+    <symbol id="i-stand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.6" r="2.2"/><path d="M12 7.5v8M9 21l3-5.5 3 5.5M8.5 11.5l3.5 1.5 3.5-1.5"/></g></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 6.5C9.5 4.8 6.5 4.5 3.5 5v13c3-.5 6-.2 8.5 1.5 2.5-1.7 5.5-2 8.5-1.5V5c-3-.5-6-.2-8.5 1.5zM12 6.5v13"/></g></symbol>
+    <symbol id="i-bow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="19" cy="9" r="2"/><path d="M5 9.5h11M6 9.5V21M14 9.5l-1 5"/></g></symbol>
+    <symbol id="i-sajdah" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="17.5" r="2"/><path d="M5 18.5l2.5-7 8 5M7.5 11.5L5 18.5h3M3 20.5h18"/></g></symbol>
+    <symbol id="i-sit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4.6" r="2.2"/><path d="M11 7.5V15h7M11 10.5l4 3M3 20.5h18"/></g></symbol>
+    <symbol id="i-finger" viewBox="0 0 24 24"><path d="M10 13V4.5a1.5 1.5 0 0 1 3 0V11l4.2.8a2 2 0 0 1 1.6 2.2l-.6 4.5A2.5 2.5 0 0 1 15.7 21h-4.2a3 3 0 0 1-2.4-1.2L6 15.6a1.4 1.4 0 0 1 2.1-1.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="12" r="6"/><path d="M17 12h4M19 10l2 2-2 2"/></g></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="14" cy="12" r="6"/><path d="M7 12H3M5 10l-2 2 2 2"/></g></symbol>
+    <symbol id="i-mark" viewBox="0 0 64 64"><path d="M17 52V31c0-9 6.6-15.6 15-20 8.4 4.4 15 11 15 20v21" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 52.5h40" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"/><path d="M38.2 27a9 9 0 1 0 0 16.4 7.2 7.2 0 1 1 0-16.4z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Learning Salat">
+    <svg class="brand-mark"><use href="#i-mark"/></svg>
+    <span class="brand-name">Learning <em>Salat</em></span>
+  </a>
+  <div class="seg rakat-seg" role="radiogroup" aria-label="Number of rak‘at">
+    <span class="seg-label">Rak‘at</span>
+    <span class="seg-pill" aria-hidden="true"></span>
+    <button role="radio" data-rakat="1" aria-checked="true">1</button>
+    <button role="radio" data-rakat="2" aria-checked="false">2</button>
+    <button role="radio" data-rakat="3" aria-checked="false">3</button>
+    <button role="radio" data-rakat="4" aria-checked="false">4</button>
+  </div>
+  <div class="top-actions">
+    <button class="stars" id="stars-open" aria-live="polite" title="Stars earned" aria-label="Stars earned. Open to reset."><svg><use href="#i-star"/></svg><b id="star-count">0</b></button>
+    <button class="btn-ghost quiz-btn" id="quiz-open" aria-label="Quiz"><svg><use href="#i-quiz"/></svg><span>Quiz</span></button>
+    <button class="btn-icon" id="settings-open" aria-label="Settings" title="Settings"><svg><use href="#i-gear"/></svg></button>
+    <button class="btn-icon theme-toggle" id="theme" aria-label="Switch light or dark"><svg class="icon-sun"><use href="#i-sun"/></svg><svg class="icon-moon"><use href="#i-moon"/></svg></button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progress-fill"></i></div>
+</header>
+
+<main class="app">
+  <section class="stage" aria-label="3D guide">
+    <div class="stage-bar">
+      <div class="stage-chip" id="stage-chip"><span id="chip-group">Get ready</span><b id="chip-title">Wudu’</b></div>
+      <div class="seg view-seg" role="radiogroup" aria-label="Camera">
+        <span class="seg-pill" aria-hidden="true"></span>
+        <button role="radio" data-view="front" aria-checked="false">Front</button>
+        <button role="radio" data-view="side" aria-checked="false">Side</button>
+        <button role="radio" data-view="back" aria-checked="false">Back</button>
+      </div>
+    </div>
+    <div class="stage-view">
+      <canvas id="scene" aria-label="A child showing the Salat posture for this step"></canvas>
+      <button class="size-btn" id="view-size" aria-label="Make the 3D view smaller" title="3D view size"><svg><use href="#i-shrink"/></svg><span id="view-size-label">100%</span></button>
+      <div class="loading" id="loading"><span class="loader-dots"><i></i><i></i><i></i></span></div>
+    </div>
+  </section>
+
+  <section class="panel" id="lesson" aria-live="polite">
+    <div class="panel-scroll">
+      <p class="eyebrow" id="eyebrow">Get ready · Step 1</p>
+      <h1 class="step-title"><span id="title">Wudu’</span> <em id="sub">Get clean</em></h1>
+      <div class="do-card">
+        <span class="do-icon"><svg id="do-icon"><use href="#i-drop"/></svg></span>
+        <p id="do">Make Wudu’ and wear clean clothes.</p>
+      </div>
+      <div class="show-row" role="group" aria-label="Show">
+        <button class="toggle" data-show="ar" aria-pressed="true"><span class="t-glyph" lang="ar">ع</span>Arabic</button>
+        <button class="toggle" data-show="tr" aria-pressed="true"><span class="t-glyph">Aa</span>Transliteration</button>
+        <button class="toggle" data-show="en" aria-pressed="true"><span class="t-glyph">EN</span>Translation</button>
+      </div>
+      <div id="recite" class="recite-list"></div>
+    </div>
+    <nav class="controls" aria-label="Step controls">
+      <button class="ctl ctl-side" id="prev" aria-label="Previous step"><svg><use href="#i-prev"/></svg><span>Back</span></button>
+      <div class="ctl-mid">
+        <button class="btn-gold ctl-play" id="play" data-state="idle" aria-label="Listen">
+          <span class="btn-state" data-for="idle"><svg><use href="#i-play"/></svg>Listen</span>
+          <span class="btn-state" data-for="busy"><svg><use href="#i-pause"/></svg>Pause</span>
+          <span class="btn-state" data-for="paused"><svg><use href="#i-play"/></svg>Resume</span>
+          <span class="btn-state" data-for="done"><svg><use href="#i-replay"/></svg>Again</span>
+        </button>
+        <label class="auto" title="Play all steps, one after another">
+          <input type="checkbox" id="auto"><span class="switch" aria-hidden="true"></span><span>Play all</span>
+        </label>
+      </div>
+      <button class="ctl ctl-side ctl-next" id="next" aria-label="Next step"><span>Next</span><svg><use href="#i-next"/></svg></button>
+      <button class="skip-btn" id="skip" hidden><svg><use href="#i-skip"/></svg><span class="skip-pre">Skip to</span><span id="skip-where">Tashahhud</span></button>
+      <button class="steps-btn" id="steps-open" aria-label="All steps"><svg><use href="#i-list"/></svg><span id="step-count">1 / 30</span></button>
+    </nav>
+  </section>
+
+  <section class="panel quiz" id="quiz" hidden aria-live="polite">
+    <div class="panel-scroll">
+      <div class="quiz-head">
+        <p class="eyebrow" id="quiz-eyebrow">Quiz · 1 of 6</p>
+        <button class="btn-ghost btn-sm" id="quiz-close"><svg><use href="#i-x"/></svg>Lesson</button>
+      </div>
+      <h1 class="step-title">What do we <em>say here?</em></h1>
+      <p class="quiz-ask" id="quiz-ask"></p>
+      <div class="quiz-dots" id="quiz-dots" aria-hidden="true"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <p class="quiz-feedback" id="quiz-feedback"></p>
+    </div>
+    <nav class="controls quiz-controls">
+      <button class="btn-gold ctl-play" id="quiz-next" disabled data-state="idle"><span class="btn-state" data-for="idle">Next question<svg><use href="#i-next"/></svg></span></button>
+    </nav>
+  </section>
+</main>
+
+<div class="overlay" id="welcome">
+  <div class="hero-card">
+    <svg class="hero-ornament" aria-hidden="true"><use href="#i-mark"/></svg>
+    <p class="hero-bismillah" lang="ar" dir="rtl" title="Bismillahir-Rahmanir-Rahim: In the name of Allah, the Gracious, the Merciful">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <h1>Let’s learn <em>Salat</em> together</h1>
+    <ul class="steps"><li>Watch the prayer positions</li><li>Listen to the Arabic</li><li>See translation</li></ul>
+    <p class="hero-q">Which Prayer?</p>
+    <div class="prayer-pick" role="radiogroup" aria-label="Which Prayer">
+      <button role="radio" data-rakat="1" aria-checked="true"><b>1</b><span>rak‘ah</span><small class="note">Only for learning</small></button>
+      <button role="radio" data-rakat="2" aria-checked="false"><b>2</b><span>rak‘at</span><small>Fajr</small></button>
+      <button role="radio" data-rakat="3" aria-checked="false"><b>3</b><span>rak‘at</span><small>Maghrib</small></button>
+      <button role="radio" data-rakat="4" aria-checked="false"><b>4</b><span>rak‘at</span><small>Zuhr · ‘Asr · ‘Isha’</small></button>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-gold btn-big" id="start"><span class="btn-state"><svg><use href="#i-play"/></svg>Start</span></button>
+      <button class="btn-ghost btn-big" id="start-quiz"><svg><use href="#i-quiz"/></svg>Quiz</button>
+    </div>
+    <p class="credit"><span>Words from <a href="https://www.alislam.org/book/salat/method-of-offering-prayer/" target="_blank" rel="noopener">Salat – The Muslim Prayer Book</a></span><span class="sep" aria-hidden="true"> · </span><span>Audio from the <a href="https://www.alislam.org/articles/online-salat-guide/" target="_blank" rel="noopener">alislam.org Salat Guide</a></span><span class="sep" aria-hidden="true"> · </span><span><button class="link-btn" type="button" data-credits>All credits</button></span></p>
+  </div>
+</div>
+
+<div class="overlay" id="done" hidden>
+  <div class="hero-card done-card">
+    <div class="burst" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="eyebrow">Salat complete</p>
+    <h1><em>MashaAllah!</em></h1>
+    <p class="hero-sub" id="done-text">You offered all 2 rak‘at.</p>
+    <p class="done-stars"><svg><use href="#i-star"/></svg><b id="done-stars">0</b> stars</p>
+    <div class="hero-actions">
+      <button class="btn-gold btn-big" id="again"><span class="btn-state"><svg><use href="#i-replay"/></svg>Pray again</span></button>
+      <button class="btn-ghost btn-big" id="done-quiz"><svg><use href="#i-quiz"/></svg>Quiz</button>
+    </div>
+  </div>
+</div>
+
+<dialog class="sheet" id="steps-sheet" aria-label="All steps">
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <div class="sheet-head">
+    <h2>All steps</h2>
+    <button class="btn-icon" id="steps-close" aria-label="Close"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <div class="sheet-body" id="steps-body"></div>
+</dialog>
+
+<dialog class="sheet" id="settings" aria-label="Settings">
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <div class="sheet-head">
+    <h2>Settings</h2>
+    <button class="btn-icon" id="settings-close" aria-label="Close"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <div class="sheet-body">
+    <div class="setting">
+      <span class="setting-label"><b>Text size</b><small>The words under the 3D view</small></span>
+      <div class="text-size" role="group" aria-label="Text size">
+        <button id="txt-down" aria-label="Smaller text">A<sub>−</sub></button>
+        <output id="txt-size" aria-live="polite">100%</output>
+        <button id="txt-up" aria-label="Bigger text">A<sup>+</sup></button>
+      </div>
+    </div>
+    <div class="setting">
+      <span class="setting-label"><b>Audio speed</b><small>How fast the Arabic is recited</small></span>
+      <div class="text-size" role="group" aria-label="Audio speed">
+        <button id="spd-down" aria-label="Slower recitation">−</button>
+        <output id="spd" aria-live="polite">1.25×</output>
+        <button id="spd-up" aria-label="Faster recitation">+</button>
+      </div>
+    </div>
+    <div class="setting">
+      <span class="setting-label"><b>Credits</b><small>The sources used to build this</small></span>
+      <button data-credits><svg><use href="#i-info"/></svg>Credits</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sheet stars-sheet" id="stars-sheet" aria-label="Your stars">
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <div class="sheet-head">
+    <h2>Your stars</h2>
+    <button class="btn-icon" id="stars-close" aria-label="Close"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <div class="sheet-body">
+    <p class="stars-big"><svg><use href="#i-star"/></svg><b id="stars-total">0</b></p>
+    <p class="stars-note">One star for every step you finish, and for every quiz answer you get right first time.</p>
+    <div class="stars-actions">
+      <button id="stars-reset"><svg><use href="#i-replay"/></svg>Start again from 0</button>
+      <button class="btn-gold" id="stars-keep">Keep my stars</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sheet credits" id="credits" aria-label="Credits">
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <div class="sheet-head">
+    <h2>Credits</h2>
+    <button class="btn-icon" id="credits-close" aria-label="Close"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <div class="sheet-body">
+    <section class="sheet-group"><h3>Prayer</h3><ul>
+      <li><a href="https://www.alislam.org/book/salat/method-of-offering-prayer/" target="_blank" rel="noopener">Salat – The Muslim Prayer Book</a>: the method, postures, Arabic, transliteration and meanings</li>
+      <li><a href="https://alquran.cloud/" target="_blank" rel="noopener">Al Quran Cloud</a>: Qur’anic Arabic text (Uthmani script)</li>
+    </ul></section>
+    <section class="sheet-group"><h3>Audio</h3><ul>
+      <li><a href="https://www.alislam.org/articles/online-salat-guide/" target="_blank" rel="noopener">Online Salat Guide</a> on alislam.org: the recorded Arabic recitations you hear in each step</li>
+    </ul></section>
+    <section class="sheet-group"><h3>Design</h3><ul>
+      <li><a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts</a> (SIL OFL): Fraunces, Inter, Instrument Serif and Amiri</li>
+    </ul></section>
+  </div>
+</dialog>
+
+<script type="module" src="js/main.js?v=20261018u"></script>
+</body>
+</html>
