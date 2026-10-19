@@ -4,8 +4,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { loadChild } from './child.js?v=20261019b';
-import { POSES, resolve, route, mix, easeInOut, keepGrounded, hopTime, quickSajdah } from './poses.js?v=20261019b';
+import { loadChild } from './child.js?v=20261019c';
+import { POSES, resolve, route, mix, easeInOut, keepGrounded, hopTime, quickSajdah } from './poses.js?v=20261019c';
 
 const VIEWS = {
   front: { pos: [0.75, 1.0, 1.95], target: [0, 0.6, 0.12] },
@@ -84,7 +84,7 @@ export class Stage {
   }
 
   async init() {
-    const [child] = await Promise.all([loadChild('models/child.glb?v=20261019b'), this.loadRoom()]);
+    const [child] = await Promise.all([loadChild('models/child.glb?v=20261019c'), this.loadRoom()]);
     this.child = child;
     this.scene.add(this.child.group);
     this.states = {};

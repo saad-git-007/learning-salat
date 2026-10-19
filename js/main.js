@@ -1,6 +1,6 @@
-import { Stage } from './scene.js?v=20261019b';
-import { RECITE, buildSteps, QUIZ } from './content.js?v=20261019b';
-import { Voice, wait } from './audio.js?v=20261019b';
+import { Stage } from './scene.js?v=20261019c';
+import { RECITE, buildSteps, QUIZ } from './content.js?v=20261019c';
+import { Voice, wait } from './audio.js?v=20261019c';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -255,7 +255,8 @@ async function enterStep(i, { play = true } = {}) {
   const moving = stage.goTo(s.pose);
   const canPlay = play && voice.unlocked;
   // A step with `then` (the Takbir-i-Tahrimah) moves on to that posture once it is said.
-  const settle = async (t = token) => { if (s.then && t === state.running) { await voice.hold(200); if (t === state.running) await stage.goTo(s.then); } };
+  const pause = s.then === 'qiyam' ? 100 : 200;   // Takbir folds the hands sooner than the Salam turns
+  const settle = async (t = token) => { if (s.then && t === state.running) { await voice.hold(pause); if (t === state.running) await stage.goTo(s.then); } };
   if (s.cue && canPlay && forward) {
     setPlayState('busy');
     const card = $('.recite.is-cue');
@@ -271,7 +272,7 @@ async function enterStep(i, { play = true } = {}) {
   stage.setView(cameraFor(s));
   if (!canPlay || !(s.recite || []).length) {
     setPlayState('idle');
-    if (s.then) { await voice.hold(500); await settle(); if (token !== state.running) return; }
+    if (s.then) { await voice.hold(s.then === 'qiyam' ? 250 : 500); await settle(); if (token !== state.running) return; }
     if (state.auto && canPlay) { await voice.hold(s.recite?.length ? 600 : 1800); if (token === state.running) advance(); }
     return;
   }
@@ -346,7 +347,7 @@ $('#play').addEventListener('click', () => {
   const token = state.running + 1;
   (s.then && raising ? raising.then(() => token === state.running + 1 ? playItems(items) : false) : playItems(items)).then(async (ok) => {
     if (!ok) return;
-    if (s.then && token === state.running) { await voice.hold(200); if (token === state.running) await stage.goTo(s.then); }
+    if (s.then && token === state.running) { await voice.hold(s.then === 'qiyam' ? 100 : 200); if (token === state.running) await stage.goTo(s.then); }
     award(s);
     if (state.auto) { await voice.hold(900); if (state.auto && token === state.running) advance(); }
   });
