@@ -4,8 +4,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { loadChild } from './child.js?v=20261018u';
-import { POSES, resolve, route, mix, easeInOut, keepGrounded, hopTime } from './poses.js?v=20261018u';
+import { loadChild } from './child.js?v=20261019a';
+import { POSES, resolve, route, mix, easeInOut, keepGrounded, hopTime } from './poses.js?v=20261019a';
 
 const VIEWS = {
   front: { pos: [0.75, 1.0, 1.95], target: [0, 0.6, 0.12] },
@@ -84,7 +84,7 @@ export class Stage {
   }
 
   async init() {
-    const [child] = await Promise.all([loadChild('models/child.glb?v=20261018u'), this.loadRoom()]);
+    const [child] = await Promise.all([loadChild('models/child.glb?v=20261019a'), this.loadRoom()]);
     this.child = child;
     this.scene.add(this.child.group);
     this.states = {};
@@ -255,6 +255,7 @@ export class Stage {
     if (!this.child) return this.ready.then(() => this.goTo(name, opts));
     const { speed = 1 } = opts;
     const hops = route(this.poseName, name);
+    const sj = this.poseName === 'sajdah' || name === 'sajdah';
     this.poseTarget = name;
     if (this.reduced) {
       this.current = structuredClone(this.states[name]); this.poseName = name; this.queue = null;
@@ -262,7 +263,7 @@ export class Stage {
     }
     return new Promise((done) => {
       const from = structuredClone(this.current);
-      const segs = hops.map((h, i) => ({ to: h, dur: hopTime(h, i === hops.length - 1, hops.length) / speed }));
+      const segs = hops.map((h, i) => ({ to: h, dur: hopTime(h, i === hops.length - 1, hops.length, sj) / speed }));
       if (this.queue) this.queue.done();
       this.queue = { from, segs, i: 0, t: 0, done };
     });
@@ -270,7 +271,8 @@ export class Stage {
 
   totalTime(name, speed = 1) {
     if (!this.child) return 0;
-    return route(this.poseName, name).reduce((a, h, i, arr) => a + hopTime(h, i === arr.length - 1, arr.length) / speed, 0);
+    const sj = this.poseName === 'sajdah' || name === 'sajdah';
+    return route(this.poseName, name).reduce((a, h, i, arr) => a + hopTime(h, i === arr.length - 1, arr.length, sj) / speed, 0);
   }
 
   jump(name) {
