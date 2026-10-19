@@ -4,8 +4,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { loadChild } from './child.js?v=20261019a';
-import { POSES, resolve, route, mix, easeInOut, keepGrounded, hopTime } from './poses.js?v=20261019a';
+import { loadChild } from './child.js?v=20261019b';
+import { POSES, resolve, route, mix, easeInOut, keepGrounded, hopTime, quickSajdah } from './poses.js?v=20261019b';
 
 const VIEWS = {
   front: { pos: [0.75, 1.0, 1.95], target: [0, 0.6, 0.12] },
@@ -84,7 +84,7 @@ export class Stage {
   }
 
   async init() {
-    const [child] = await Promise.all([loadChild('models/child.glb?v=20261019a'), this.loadRoom()]);
+    const [child] = await Promise.all([loadChild('models/child.glb?v=20261019b'), this.loadRoom()]);
     this.child = child;
     this.scene.add(this.child.group);
     this.states = {};
@@ -255,7 +255,7 @@ export class Stage {
     if (!this.child) return this.ready.then(() => this.goTo(name, opts));
     const { speed = 1 } = opts;
     const hops = route(this.poseName, name);
-    const sj = this.poseName === 'sajdah' || name === 'sajdah';
+    const sj = quickSajdah(this.poseName, name);
     this.poseTarget = name;
     if (this.reduced) {
       this.current = structuredClone(this.states[name]); this.poseName = name; this.queue = null;
@@ -271,7 +271,7 @@ export class Stage {
 
   totalTime(name, speed = 1) {
     if (!this.child) return 0;
-    const sj = this.poseName === 'sajdah' || name === 'sajdah';
+    const sj = quickSajdah(this.poseName, name);
     return route(this.poseName, name).reduce((a, h, i, arr) => a + hopTime(h, i === arr.length - 1, arr.length, sj) / speed, 0);
   }
 

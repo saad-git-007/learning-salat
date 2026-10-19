@@ -136,11 +136,13 @@ export const FAMILY = {
 // How long each hop takes (s). Going down to Sajdah and getting up again are brisk, as a
 // child does them; the arm movements of the Takbir are quick too.
 const HOP = { kneelMid: 0.42, kneel: 0.42, handsDown: 0.42, kneelTall: 0.42, squat: 0.42, stand: 0.45, sit: 0.6, raise: 0.055, lower: 0.055 };
+// Going down to Sajdah from standing and standing up from it run twice as quick.
+export const quickSajdah = (from, to) => (from === 'sajdah' && FAMILY[to] === 'stand') || (to === 'sajdah' && FAMILY[from] === 'stand');
 export function hopTime(name, last, nHops, sajdah = false) {
   // Raising the hands for the Takbir and folding them after it: brisk (raise/lower + this hop).
   if (last && nHops === 2 && (name === 'qiyam' || name === 'takbir')) return 0.085;
   const t = last ? (nHops > 2 ? 0.6 : name === 'qiyam' || name === 'takbir' ? 0.55 : 0.95) : HOP[name] ?? 0.7;
-  return sajdah ? t / 2 : t;   // going down to Sajdah and up from it: twice as quick
+  return sajdah ? t / 2 : t;
 }
 
 // The in-between postures to pass through, so movements look real.

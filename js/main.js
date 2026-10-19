@@ -1,6 +1,6 @@
-import { Stage } from './scene.js?v=20261019a';
-import { RECITE, buildSteps, QUIZ } from './content.js?v=20261019a';
-import { Voice, wait } from './audio.js?v=20261019a';
+import { Stage } from './scene.js?v=20261019b';
+import { RECITE, buildSteps, QUIZ } from './content.js?v=20261019b';
+import { Voice, wait } from './audio.js?v=20261019b';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
