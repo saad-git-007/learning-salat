@@ -1,3 +1,4 @@
+@font-face { font-family: "IndoPak Nastaleeq"; src: url("../fonts/indopak-nastaleeq.woff2") format("woff2"); font-display: swap; }
 /* Learning Salat — midnight & gold, with a Soft Blend indigo night (dark) and an
    Orchid Grain dawn (light). Tokens follow the owner's design language. */
 
@@ -59,7 +60,7 @@
   --font-display: "Fraunces", Georgia, serif;
   --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-italic: "Instrument Serif", "Fraunces", Georgia, serif;
-  --font-ar: "Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
+  --font-ar: "IndoPak Nastaleeq", "Amiri", "Noto Naskh Arabic", serif;
   --r-sm: 8px; --r-md: 12px; --r-lg: 18px; --r-xl: 26px; --r-full: 999px;
   --topbar-h: 64px;
   --ease-out: cubic-bezier(.16,1,.3,1); --ease-drawer: cubic-bezier(.32,.72,0,1); --spring-sm: cubic-bezier(.3,1.35,.4,1);
@@ -199,7 +200,7 @@ button.stars:hover:not(:disabled) { background-color: color-mix(in srgb, var(--g
 .show-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 14px; }
 .toggle { min-height: 38px; padding: 0 14px 0 6px; border-radius: var(--r-full); background: transparent; border-color: var(--line); color: var(--text-muted); font-size: .875rem; }
 .toggle .t-glyph { display: grid; place-items: center; min-width: 28px; height: 28px; padding: 0 4px; border-radius: var(--r-full); background: var(--surface-3); font: 700 .75rem/1 var(--font-ui); color: var(--text-muted); }
-.toggle .t-glyph[lang="ar"] { font: 700 1.05rem/1 var(--font-ar); padding-bottom: 3px; }
+.toggle .t-glyph[lang="ar"] { font: 400 1.25rem/1 var(--font-ar); padding-bottom: 3px; }
 .toggle[aria-pressed="true"] { color: var(--text); border-color: var(--gold-line); background: var(--gold-soft); }
 .toggle[aria-pressed="true"] .t-glyph { background: var(--gold); color: var(--on-gold); }
 .toggle:hover:not(:disabled) { background-color: var(--gold-soft); }
@@ -253,7 +254,7 @@ button.stars:hover:not(:disabled) { background-color: color-mix(in srgb, var(--g
 .skip-btn:active { scale: .96; }
 .skip-btn[hidden] { display: none; }
 .controls:has(.skip-btn:not([hidden])) .steps-btn { left: 18px; translate: none; }
-.ar { direction: rtl; text-align: right; font: 400 clamp(1.6rem, 2.4vw, 2rem)/2 var(--font-ar); color: var(--text); unicode-bidi: plaintext; }
+.ar { direction: rtl; text-align: right; font: 400 clamp(2rem, 3vw, 2.5rem)/2.1 var(--font-ar); color: var(--text); unicode-bidi: plaintext; }
 .ar .ph, .tr .ph, .en .ph { border-radius: 6px; transition: color var(--t-state), background-color var(--t-state); }
 .ar .ph { padding: 0 2px; }
 .ph.on { color: var(--gold); background: linear-gradient(transparent 62%, var(--gold-soft) 62%); }
@@ -327,7 +328,7 @@ button.stars:hover:not(:disabled) { background-color: color-mix(in srgb, var(--g
 .hero-card { position: relative; flex: none; margin-block: auto; width: min(560px, 100%); padding: 38px 36px 30px; border-radius: var(--r-xl); background: var(--hero-bg); box-shadow: var(--elev-3); overflow: hidden; text-align: center; }
 .hero-ornament { position: absolute; top: -90px; right: -90px; width: 300px; height: 300px; color: var(--gold); opacity: .035; }
 .hero-card .eyebrow { margin-bottom: 12px; }
-.hero-bismillah { margin: 0 0 6px; font: 400 clamp(1.5rem, 4.5vw, 1.9rem)/1.6 var(--font-ar); color: var(--gold); direction: rtl; }
+.hero-bismillah { margin: 0 0 6px; font: 400 clamp(1.8rem, 5.4vw, 2.3rem)/1.7 var(--font-ar); color: var(--gold); direction: rtl; }
 .hero-card h1 { font: 400 clamp(2.2rem, 6vw, 3.2rem)/1.04 var(--font-display); font-variation-settings: "opsz" 60; letter-spacing: -.025em; }
 .hero-card h1 em { font: italic 400 1.12em/1 var(--font-italic); letter-spacing: 0; color: var(--gold); }
 .hero-sub { max-width: 40ch; margin: 14px auto 0; color: var(--text-2); font-size: 1.0625rem; }
